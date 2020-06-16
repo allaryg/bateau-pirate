@@ -1,0 +1,22 @@
+
+body{
+    margin: auto 20px;
+}
+h1{
+    color: red;
+    border-right: 5px groove black;
+    text-align: center;
+    width: 50%;
+}
+.testClass1{
+    color: blue;
+}
+.testClass2{
+    color: green;
+}
+#testId{
+    color: orange;
+}
+input:focus{
+    color: purple;
+}

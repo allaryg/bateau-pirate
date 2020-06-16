@@ -1,0 +1,38 @@
+
+
+
+h1{
+    text-align: center;
+}
+.civilite_form label, .civilite_form input, .nomPrenom_form label{
+    margin-left: 20px;
+}
+
+
+.box_text_form{
+    display: flex;
+}
+.nomPrenom_form, .message_form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: end;
+}
+
+
+input{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+input[type=text], input[type=email]{
+    margin: 6px 0 0 60px;
+}
+
+.buton_form{
+    text-align: center;
+
+}
+.buton_form input{
+    margin: 20px;
+}
