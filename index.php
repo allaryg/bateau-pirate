@@ -35,14 +35,14 @@
         <nav id="menu_principal">
             <ul>
                 <li><a href="http://le-bateau-pirate.fr">Accueil</a></li>
-                <li><a href="http://le-bateau-pirate.fr/albums">Parcourir les albums</a></li>
+                <li><a href="http://le-bateau-pirate.fr/album">Parcourir les albums</a></li>
                 <li><a href="contact.html">Nous contacter</a></li>
                 <li>
                     <?php
 
                         function formConnexion(){
                             echo '  <form method="post" class="connexion">
-                                        <input type="text" name="nom">
+                                        <input type="text" name="nom" required>
                                         <input type="submit" name="co" value="Se connecter">
                                     </form>';
                         }
@@ -83,23 +83,33 @@
 
             <?php
 
-                $disque1 = ["src" => "https://via.placeholder.com/200", "alt" => "image1", "titre" => "Nom album 1", "id" => "album_item_1"];
-                $disque2 = ["src" => "https://via.placeholder.com/200", "alt" => "image2", "titre" => "Nom album 2", "id" => "album_item_2"];
-                $disque3 = ["src" => "https://via.placeholder.com/200", "alt" => "image3", "titre" => "Nom album 3", "id" => "album_item_3"];
-                $disque4 = ["src" => "https://via.placeholder.com/200", "alt" => "image4", "titre" => "Nom album 4", "id" => "album_item_1"];
-
-                $list_disque = [$disque1, $disque2, $disque3, $disque4];
-
                 echo '<div class="container">';
 
-                foreach ($list_disque as $disque){
-                    echo '  <div id="'.$disque["id"].'">
-                                <img src="'.$disque["src"].'" alt="'.$disque["alt"].'">
-                                <h3>'.$disque["titre"].'</h3>
-                            </div>';
+                // Connexion à la base de données bateau
+                $db = new mysqli("localhost", "bateau", "bateau", "bateau");
+                if ($db->connect_errno) {
+                    echo "==> Echec lors de la connexion à MySQL : (" . $db->connect_errno . ") " . $db->connect_error;
                 }
-
+                // Creation de la requête
+                $sql = "SELECT * FROM album;";
+                if ($result = $db->query($sql)){
+                    if($result->num_rows != 0){
+                        // lire le résultat et l'afficher sur la page
+                        while($disque = $result->fetch_assoc()){
+                            echo '  <div>
+                                        <img src="img/'.($disque['jaquette']).'.jpg" height="200" alt="La pochette de '.$disque['nom'].'">
+                                        <h3>'.$disque['nom'].'</h3>
+                                        Produit par :'.$disque['label'].'
+                                    </div>';
+                        }
+                    } else {
+                        echo "<h4>Il n'y a pas de disque à afficher</h4>";
+                    }
+                }else{
+                    echo "<h4>ERREUR SQL: pas de disque à afficher</h4>";
+                }
                 echo '</div>';
+
             ?>
 
         </section>
