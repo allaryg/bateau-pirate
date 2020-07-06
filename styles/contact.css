@@ -1,6 +1,4 @@
 
-
-
 h1{
     text-align: center;
 }
@@ -35,4 +33,19 @@ input[type=text], input[type=email]{
 }
 .buton_form input{
     margin: 20px;
+}
+
+.connexion{
+    display: flex;
+    flex-wrap: wrap;
+}
+.connexion input{
+    margin: 0;
+}
+.connexion input[type=text]{
+    width: 150px;
+}
+.connexion input[type=submit]{
+    border-radius: 0;
+    padding: 0;
 }

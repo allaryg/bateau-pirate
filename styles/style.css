@@ -112,6 +112,14 @@ h2{
 }
 .container img{
     margin: 0 20px;
+    width: 200px;
+    height: 200px;
+}
+.container div{
+    margin-bottom: 20px;
+}
+.container h3, .container p{
+    margin: 0;
 }
 /* Float */
 .col-50{
@@ -124,6 +132,9 @@ h2{
 /* Formulaire news */
 #newsletter p, #newsletter form{
     text-align: center;
+}
+select, option, input, ::placeholder{
+    font-family: 'skullsandcrossbones';
 }
 input{
     display: block;
